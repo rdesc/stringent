@@ -170,7 +170,7 @@ void pinMode(int p, int m) {}
 #define max(a,b) ((a)>(b)?(a):(b))
 #define min(a,b) ((a)>(b)?(b):(a))
 extern long disparity;
-#include "/tmp/data.ino"
+#include "data.ino"
 
 //include stepper file
 typedef unsigned char byte;
@@ -189,10 +189,10 @@ typedef unsigned char byte;
 #define stepsPerMM (stepsPerRotation/spoolCirc)
 #define abs(X) abs((int)(X))
 
-#include "../plotter/step_control.ino"
+#include "step_control.ino"
 
 //inlude main plotter file
-#include "../plotter/plotter.ino"
+#include "plotter.ino"
 
 
 int main(int argc, char* argv[])

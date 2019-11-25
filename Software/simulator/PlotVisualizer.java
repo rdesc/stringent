@@ -165,7 +165,8 @@ public class PlotVisualizer implements Runnable
 	    if(str == null) {
 		try {
 		    // retrieve image
-		    File outputfile = new File("/tmp/plot.png");
+		    File outputfile = new File(System.getProperty("user.dir") + "/plot.png");
+		    System.out.println("Plot saved path: " + outputfile);
 		    ImageIO.write(getImage(), "png", outputfile);
 		} catch (IOException e) { }
 		Thread.sleep(2000);

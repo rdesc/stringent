@@ -157,9 +157,12 @@ void loop()
       float right = (manualRight/spoolCirc) * 360.0;    
       
       if(manualLeft != 0 || manualRight != 0) {
-        currentLeftSteps += manualLeft*stepsPerMM;
-        currentRightSteps += manualRight*stepsPerMM;
-             
+        //currentLeftSteps += manualLeft*stepsPerMM;
+        //currentRightSteps += manualRight*stepsPerMM;
+
+        currentLeftSteps += 5000;
+        currentRightSteps += 5000;
+                
         step(manualLeft*stepsPerMM,manualRight*stepsPerMM,false);
         setOrigo();             
       }

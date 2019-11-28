@@ -8,8 +8,8 @@ decode_results results;
 /******************** PIONEER_DVD_REMOTE **********************/
 #define CODE_BIG_PRINT 0xF50A4FB0    //up
 #define CODE_SMALL_PRINT 0xF50ACF30  //downd
-#define CODE_LEFT_REEL_IN 0xf50a1de2   //step
-#define CODE_LEFT_REEL_OUT 0xf50aed12  //slow
+#define CODE_LEFT_REEL_IN DEB92   //step
+#define CODE_LEFT_REEL_OUT 3EB92  //slow
 #define CODE_RIGHT_REEL_IN 0xc53ad926   //rev
 #define CODE_RIGHT_REEL_OUT 0xc53a59a6  //fwd
 #define CODE_LEFT_CALIBRATION 0xC53AB946  //prev
@@ -33,8 +33,8 @@ decode_results results;
 /******************** NONAME_WHITE_REMOTE **********************/
 #define CODE_BIG_PRINT 0xff02fd //+
 #define CODE_SMALL_PRINT 0xff9867 //-
-#define CODE_LEFT_REEL_IN 0xff22dd //test
-#define CODE_LEFT_REEL_OUT 0xffe01f //left
+#define CODE_LEFT_REEL_IN 0xdeb92 //test WE REMAPPED
+#define CODE_LEFT_REEL_OUT 0x3eb92 //left WE REMAPPED
 #define CODE_RIGHT_REEL_IN 0xffc23d //back
 #define CODE_RIGHT_REEL_OUT 0xff906f //right
 #define CODE_LEFT_CALIBRATION 0xffa25d //power
@@ -82,6 +82,7 @@ void readIR()
          printSize = 0.5;
          break;
        case CODE_LEFT_REEL_IN: //left -
+         Serial.println("LEFT BISH");
          manualLeft = -1;
          break;
        case CODE_LEFT_REEL_OUT: //left +
@@ -152,4 +153,3 @@ void readIR()
     irrecv.resume(); // Receive the next value
   }  
 }
-

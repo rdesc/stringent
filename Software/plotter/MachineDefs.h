@@ -29,7 +29,7 @@
 
 
 //IR-receiver pin
-#define RECV_PIN  A0
+//#define RECV_PIN  A0
  
 //stepper motor pins
 #define LEFT_STEP_PIN_1 6
@@ -40,4 +40,3 @@
 #define RIGHT_STEP_PIN_2 3
 #define RIGHT_STEP_PIN_3 4
 #define RIGHT_STEP_PIN_4 5
-

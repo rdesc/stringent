@@ -4,45 +4,21 @@
 IRrecv irrecv(RECV_PIN);
 decode_results results;  
 
-#ifdef PIONEER_DVD_REMOTE
-/******************** PIONEER_DVD_REMOTE **********************/
-#define CODE_BIG_PRINT 0xF50A4FB0    //up
-#define CODE_SMALL_PRINT 0xF50ACF30  //downd
-#define CODE_LEFT_REEL_IN DEB92   //step
-#define CODE_LEFT_REEL_OUT 3EB92  //slow
-#define CODE_RIGHT_REEL_IN 0xc53ad926   //rev
-#define CODE_RIGHT_REEL_OUT 0xc53a59a6  //fwd
-#define CODE_LEFT_CALIBRATION 0xC53AB946  //prev
-#define CODE_RIGHT_CALIBRATION 0xC53A39C6 //next
-#define CODE_ENABLE_CONT_DRIVE 0xf50a2df0  //return
-#define CODE_DISABLE_CONT_DRIVE 0xf50af708 //enter
-#define CODE_STOP 0xC53A19E6 //pause
-#define CODE_RESUME 0xc53a7986 //play
-#define CODE_1 0xf50a857a
-#define CODE_2 0xf50a45ba
-#define CODE_3 0xf50ac53a
-#define CODE_4 0xF50A25DA
-#define CODE_5 0xF50AA55A
-#define CODE_6 0xF50A659A
-#define CODE_7 0xF50AE51A
-#define CODE_8 0xF50A15EA
-#define CODE_9 0xF50A956A
-#define CODE_0 0xF50A05FA
-
-#elif defined NONAME_WHITE_REMOTE
-/******************** NONAME_WHITE_REMOTE **********************/
-#define CODE_BIG_PRINT 0xff02fd //+
-#define CODE_SMALL_PRINT 0xff9867 //-
-#define CODE_LEFT_REEL_IN 0xdeb92 //test WE REMAPPED
-#define CODE_LEFT_REEL_OUT 0x3eb92 //left WE REMAPPED
-#define CODE_RIGHT_REEL_IN 0xffc23d //back
-#define CODE_RIGHT_REEL_OUT 0xff906f //right
-#define CODE_LEFT_CALIBRATION 0xffa25d //power
-#define CODE_RIGHT_CALIBRATION 0xffe21d //menu
+#ifdef SONY_DVD_REMOTE
+#define POWER 0xa8b92 // power
+#define CODE_BIG_PRINT 0x490 // vol +
+#define CODE_SMALL_PRINT 0xc90 // vol -
+#define CODE_LEFT_REEL_IN 0xdeb92 // left arrow
+#define CODE_LEFT_REEL_OUT 0x3eb92 // right arrow
+#define CODE_RIGHT_REEL_IN 0x9eb92 // up arrow
+#define CODE_RIGHT_REEL_OUT 0x5eb92 // down arrow
+#define CODE_LEFT_CALIBRATION 0xcb92 // prev
+#define CODE_RIGHT_CALIBRATION 0x8cb92 // next
+#define CODE_STOP 0x1cb92 // stop
+#define CODE_RESUME 0x4cb92 // play
+// have not remapped rest below
 #define CODE_ENABLE_CONT_DRIVE 0xffb04f //c
 #define CODE_DISABLE_CONT_DRIVE 0xBADC0DE //not button for this shit 
-#define CODE_STOP 0xff6897 //0
-#define CODE_RESUME 0xffa857 //play
 #define CODE_1 0xff30cf
 #define CODE_2 0xff18e7
 #define CODE_3 0xff7a85
@@ -71,7 +47,7 @@ void readIR()
   if (irrecv.decode(&results)) {         
     switch(results.value) {
 #ifndef NO_REMOTE      
-       case 0xF50A3DC2:  //power
+       case POWER:  //power
          storePositionInEEPROM();
                
          break;         
@@ -89,6 +65,7 @@ void readIR()
          manualLeft = 1;
          break;
        case CODE_RIGHT_REEL_IN: //right -
+         Serial.println("RIGHT SUH");
          manualRight = -1;
          break;
        case CODE_RIGHT_REEL_OUT: //right +

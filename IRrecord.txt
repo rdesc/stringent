@@ -1,0 +1,22 @@
+left arrow:   DEB92
+right arrow:  3EB92
+up arrow:     9EB92
+down arrow:   5EB92
+enter:        D0B92
+
+play:         4CB92
+pause:        9CB92
+stop:         1CB92
+dvd menu:     D8B92
+title:        58B92
+next:         8CB92
+prev:         CB92
+
+power:        A8B92
+
+return:       70B92
+
+setup:        CAB92
+
+vol +:        490
+vol -:        C90

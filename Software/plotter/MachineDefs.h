@@ -17,8 +17,7 @@
 //#define HAS_BATTERY_MEASUREMENT 
  
 //which remote control to use
-//#define PIONEER_DVD_REMOTE
-#define NONAME_WHITE_REMOTE
+#define SONY_DVD_REMOTE
 
 //servo pin
 #define SERVO_PIN A5
@@ -29,7 +28,7 @@
 
 
 //IR-receiver pin
-//#define RECV_PIN  A0
+#define RECV_PIN  A0
  
 //stepper motor pins
 #define LEFT_STEP_PIN_1 6

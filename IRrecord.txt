@@ -16,7 +16,16 @@ power:        A8B92
 
 return:       70B92
 
+surround:     5AB92
+BNR:          12B92
 setup:        CAB92
+time/text:    14B92
+a-b:          54B92
+shuffle:      ACB92
+repeat:       34B92
+program:      F8B92
+clear:        F0B92
 
+tv/video:     A50
 vol +:        490
 vol -:        C90

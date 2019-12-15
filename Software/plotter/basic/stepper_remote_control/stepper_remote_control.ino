@@ -1,4 +1,3 @@
-
 /*
  Stepper Motor Control - one revolution
 
@@ -18,11 +17,10 @@
 #include <Stepper.h>
 #include <Servo.h>
 
-const int stepsPerRevolution = 500;  // change this to fit the number of steps per revolution for your motor
-const int RECV_PIN = 7;
-const int redPin = 2;
-const int greenPin = 3;
-const int servoPin = 4;
+const int stepsPerRevolution = 200;  // change this to fit the number of steps per revolution for your motor
+const int RECV_PIN = A0;
+
+const int servoPin = A5;
 IRrecv irrecv(RECV_PIN);
 decode_results results;
 unsigned long key_value = 0;
@@ -38,9 +36,6 @@ void setup() {
   Serial.begin(9600);
   irrecv.enableIRIn();
   irrecv.blink13(true);
-  // lights
-  pinMode(redPin, OUTPUT);
-  pinMode(greenPin, OUTPUT);
   // servo setup
   servo.attach(servoPin);
   servo.write(0);
@@ -56,25 +51,13 @@ void loop(){
         switch(results.value){
           case 0xdeb92:
           Serial.println("clockwise");
-          digitalWrite(redPin, HIGH);
-          servo.write(180);
-          myStepper.step(-stepsPerRevolution);
-          myStepper.step(-stepsPerRevolution);
-          myStepper.step(-stepsPerRevolution);
-          myStepper.step(-stepsPerRevolution);
-          delay(5);
-          digitalWrite(redPin, LOW);
+          servo.write(80);
+          delay(0.1);
           break;
           case 0x3eb92:
           Serial.println("counterclockwise");
-          digitalWrite(greenPin, HIGH);
           servo.write(0);
-          myStepper.step(stepsPerRevolution);
-          myStepper.step(stepsPerRevolution);
-          myStepper.step(stepsPerRevolution);
-          myStepper.step(stepsPerRevolution);
-          delay(5);
-          digitalWrite(greenPin, LOW);
+          delay(0.1);
           break;
           case 0xFFE21D:
           Serial.println("CH+");

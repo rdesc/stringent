@@ -19,15 +19,15 @@ decode_results results;
 // have not remapped rest below
 #define CODE_ENABLE_CONT_DRIVE 0xffb04f //c
 #define CODE_DISABLE_CONT_DRIVE 0xBADC0DE //not button for this shit 
-#define CODE_1 0xff30cf
-#define CODE_2 0xff18e7
-#define CODE_3 0xff7a85
-#define CODE_4 0xff10ef
-#define CODE_5 0xff38c7
-#define CODE_6 0xff5aa5
-#define CODE_7 0xff42bd
-#define CODE_8 0xff4ab5
-#define CODE_9 0xff52ad
+#define CODE_1 0x5ab92
+#define CODE_2 0x12b92
+#define CODE_3 0xcab92
+#define CODE_4 0x14b92
+#define CODE_5 0x54b92
+#define CODE_6 0xacb92
+#define CODE_7 0x34b92
+#define CODE_8 0xf8b92
+#define CODE_9 0xf0b92
 
 #else
 #error What remote?

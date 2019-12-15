@@ -101,16 +101,15 @@ void logBattery(int secsSinceStart) {
 
 void setupData()
 {
-  // make sure that the default chip select pin is set to
-  // output, even if you don't use it:
-  pinMode(10, OUTPUT);
+  SER_PRINTLN("Initializing SD card...");
 
   // see if the card is present and can be initialized:
-  if (!SD.begin(10)) {
-    SER_PRINTLN("SD fail");
+  if (!SD.begin(4)) {
+    SER_PRINTLN("SD initialization failed!");
     // don't do anything more:
     return;
-  }  
+  }
+  SER_PRINTLN("SD initialization done.");
 #ifdef HAS_BATTERY_MEASUREMENT  
 #ifndef USE_DATA_FROM_DISK
   batteryFile = SD.open("battery.log", FILE_WRITE);;      
@@ -369,4 +368,3 @@ bool getSvgData(int plotNo, int point, float *x, float* y, int* pen)
 
   return true;
 }
-

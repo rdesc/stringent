@@ -16,9 +16,11 @@ decode_results results;
 #define CODE_RIGHT_CALIBRATION 0x8cb92 // next
 #define CODE_STOP 0x1cb92 // stop
 #define CODE_RESUME 0x4cb92 // play
-// have not remapped rest below
+
+// TODO: remap
 #define CODE_ENABLE_CONT_DRIVE 0xffb04f //c
 #define CODE_DISABLE_CONT_DRIVE 0xBADC0DE //not button for this shit 
+
 #define CODE_1 0x5ab92
 #define CODE_2 0x12b92
 #define CODE_3 0xcab92
@@ -76,7 +78,8 @@ void readIR()
          testPen();         
          break;
        case CODE_RIGHT_CALIBRATION:  //next - calibrate 200 mm from right
-         currentRightSteps = 200*stepsPerMM;              
+         currentRightSteps = 200*stepsPerMM;
+         testPen(); 
 
          lDist = currentLeftSteps/stepsPerMM;
          disparity = (long)sqrt(lDist*lDist-200L*200L);
@@ -88,6 +91,7 @@ void readIR()
          SER_PRINTLN(disparity);
 
          break;   
+         // TODO: remap CONT DRIVE
        case CODE_DISABLE_CONT_DRIVE: 
          continousManualDrive = false;
          break;
@@ -96,10 +100,8 @@ void readIR()
          break;
        case CODE_STOP:  
          stopPressed = true;
-#if  CODE_DISABLE_CONT_DRIVE == 0xBADC0DE
         //just disable continous drive when pressing stop. Re-enable with CODE_ENABLE_CONT_DRIVE again
-         continousManualDrive = false;
-#endif
+         continousManualDrive = true;
          break;
        case CODE_RESUME:
           //resume print, or start new

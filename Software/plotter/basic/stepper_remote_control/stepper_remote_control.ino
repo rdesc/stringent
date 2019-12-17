@@ -38,7 +38,7 @@ void setup() {
   irrecv.blink13(true);
   // servo setup
   servo.attach(servoPin);
-  servo.write(0);
+  servo.write(80);
 }
 
 

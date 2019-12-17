@@ -23,7 +23,7 @@
 
 //servo values for pen up/down
 #define PEN_UP 80
-#define PEN_DOWN 60
+#define PEN_DOWN 30
 
 
 //IR-receiver pin

@@ -27,7 +27,7 @@ int currentPlot = 0;
 bool resumePlot = false;
 
 //these numbers are left from early versions where setup was done by having exactly 1m of string reeled out on both left and right and a fix disparity of 1m between anchors. This is now set up by user instead.
-long disparity = 1000;  //distance between anchor points 
+long disparity = 1000;  //distance between anchor points
 long currentLeftSteps  = 1000*stepsPerMM; 
 long currentRightSteps = 1000*stepsPerMM;
 float centerX = 500; //starting x pos
@@ -80,7 +80,7 @@ void setup()
   //read stored position from EEPROM
   currentLeftSteps = eepromReadLong(EEPROM_LEFT_ADDR);  
   currentRightSteps = eepromReadLong(EEPROM_RIGHT_ADDR);  
-  disparity = eepromReadLong(EEPROM_DISPARITY_ADDR);  
+  disparity = eepromReadLong(EEPROM_DISPARITY_ADDR);
   stoppedAt = eepromReadLong(EEPROM_STOPPED_AT_ADDR);  
   currentPlot = eepromReadLong(EEPROM_CURRENT_PLOT_ADDR);    
   if(stoppedAt > 0) {
@@ -157,12 +157,9 @@ void loop()
       float right = (manualRight/spoolCirc) * 360.0;    
       
       if(manualLeft != 0 || manualRight != 0) {
-        //currentLeftSteps += manualLeft*stepsPerMM;
-        //currentRightSteps += manualRight*stepsPerMM;
+        currentLeftSteps += manualLeft*stepsPerMM;
+        currentRightSteps += manualRight*stepsPerMM;
 
-        currentLeftSteps += 5000;
-        currentRightSteps += 5000;
-                
         step(manualLeft*stepsPerMM,manualRight*stepsPerMM,false);
         setOrigo();             
       }

@@ -189,7 +189,7 @@ typedef unsigned char byte;
 #define stepsPerMM (stepsPerRotation/spoolCirc)
 #define abs(X) abs((int)(X))
 
-#include "step_control.ino"
+#include "../plotter/step_control.ino"
 
 //inlude main plotter file
 #include "plotter.ino"
